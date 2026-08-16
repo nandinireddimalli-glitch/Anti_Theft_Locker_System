@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Nandini Reddimalli",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    { "type": "board-mfrc522", "id": "rfid1", "top": -120, "left": 200, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -150, "left": -260, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 140, "left": 260, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "btn1", "top": 140, "left": -260, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 180, "left": -300, "attrs": { "value": "10000" } }
+  ],
+  "connections": [
+    [ "uno:5V",  "rfid1:3.3V", "red",   [ "v0" ] ],
+    [ "uno:GND.1", "rfid1:GND", "black", [ "v0" ] ],
+    [ "uno:13", "rfid1:SCK",  "green", [ "v0" ] ],
+    [ "uno:11", "rfid1:MOSI", "green", [ "v0" ] ],
+    [ "uno:12", "rfid1:MISO", "green", [ "v0" ] ],
+    [ "uno:10", "rfid1:SDA",  "green", [ "v0" ] ],
+    [ "uno:9",  "rfid1:RST",  "green", [ "v0" ] ],
+
+    [ "uno:5V",  "lcd1:VCC", "red",   [ "v0" ] ],
+    [ "uno:GND.2", "lcd1:GND", "black", [ "v0" ] ],
+    [ "uno:A4", "lcd1:SDA", "green", [ "v0" ] ],
+    [ "uno:A5", "lcd1:SCL", "blue",  [ "v0" ] ],
+
+    [ "uno:8", "relay1:IN", "orange", [ "v0" ] ],
+    [ "uno:5V", "relay1:VCC", "red",  [ "v0" ] ],
+    [ "uno:GND.3", "relay1:GND", "black", [ "v0" ] ],
+
+    [ "uno:4", "btn1:1.l", "green", [ "v0" ] ],
+    [ "btn1:2.l", "uno:GND.4", "black", [ "v0" ] ],
+    [ "uno:5V", "r1:1", "red", [ "v0" ] ],
+    [ "r1:2", "btn1:1.l", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
